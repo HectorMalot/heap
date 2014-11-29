@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "heap"
   gem.homepage = "http://github.com/HectorMalot/heap"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Easy integration of heapanalytics into your ruby app}
+  gem.description = %Q{Easy integration of heapanalytics into your ruby app}
   gem.email = "dennisdereus@gmail.com"
   gem.authors = ["Dennis de Reus"]
   # dependencies defined in Gemfile
