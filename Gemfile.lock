@@ -83,9 +83,9 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.0)
-  httparty
+  httparty (~> 0.13)
   jeweler (~> 2.0.1)
   rdoc (~> 3.12)
   shoulda
   simplecov
-  webmock
+  webmock (~> 1.20)
