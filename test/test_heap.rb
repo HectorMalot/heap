@@ -16,10 +16,10 @@ class TestHeap < MiniTest::Test
     stub_request(:post, "https://heapanalytics.com/api/identify").
       with(:body => {:app_id => '123', :identity => 'test@example.com', :properties => {:property1 => 'hello', :property2 => 'world'}},
          :headers => {'Content-Type'=>'application/json'}).
-      to_return(:body => "OK")
+      to_return(:body => "{}")
 
     Heap.app_id = 123
     result = Heap.identify('test@example.com', :property1 => 'hello', :property2 => 'world')
-    assert_equal result.to_s, "OK"
+    assert_equal result.to_s, "{}"
   end
 end
