@@ -1,0 +1,23 @@
+# heap
+
+Heap is a simple rubygem that makes is simple to integrate your application with heap analytics. It provides:
+
+* an easy way to submit events to heap directly from your code
+* the possibility to set additional attributes on your users for heap
+* helpers to easily integrate heap into your Rails application
+
+## Contributing to heap
+ 
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
+* Fork the project.
+* Start a feature/bugfix branch.
+* Commit and push until you are happy with your contribution.
+* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+## Copyright
+
+The Heap gem is licensed under the MIT license. Copyright (c) 2014 Dennis de Reus. See LICENSE.txt for
+further details.
+
