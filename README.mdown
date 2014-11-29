@@ -1,12 +1,66 @@
-# heap
+# Heap
 
-Heap is a simple rubygem that makes is simple to integrate your application with heap analytics. It provides:
+Heap is a simple rubygem that makes is simple to integrate your application with [heap analytics](heapanalytics.com). It provides:
 
-* an easy way to submit events to heap directly from your code
-* the possibility to set additional attributes on your users for heap
-* helpers to easily integrate heap into your Rails application
+* Helpers to easily integrate heap into your Rails application
+* An easy way to submit events to heap directly from your code
+* The possibility to set additional attributes on your users directly from your app
 
-## Contributing to heap
+## Installation
+
+Installation is simple via:
+
+    gem install heap
+
+For Rails applications, run the following command to add an initiatlizer for your heap `app_id`:
+
+    rails generate heap:install
+
+To enable the tracking code on your website, place the following in just before the closing `</head>` tag in your layout:
+
+    heap_analytics
+
+## Usage
+
+After installing, you will have access to `Heap.event` and `Heap.identify` in your ruby code. For Rails, Heap provides 2 helpers to include the tracking code, and to identify individual users.
+
+Heap needs your application ID to successfully submit data to heapanalytics.com. You can set this directly using `Heap.app_id = 123`, or in Rails, by using the provided generator to generate an initializer at config/initializers/heap.rb
+
+### Identifying your users
+
+The `heap_identify` view helper can be used to supply heap with attributes for your users. The helper takes 2 arguments: 
+
+* [String] email: The e-mail address used to identify your visitor in Heap
+* [Hash, optional] properties: A hash containing additional properties for your users (Hashes with multiple levels are currently not supported)
+
+Example:
+
+    <%= heap_identify(current_user.email, name: current_user.name, role: current_user.role) if signed_in? %>
+
+### Tracking server-side events
+
+In case you want to track server-side events -- for example when sending a welcome e-mail to a new user --, you can do so using `Heap.event`. `Heap.event` takes 3 arguments:
+
+* [String] event: A description of the event
+* [String] identity: The e-mail address used to identify your user
+* [Hash, optional] properties: A hash containing additional properties for the event (Hashes with multiple levels are currently not supported)
+
+Example:
+
+    Heap.event("Welcome e-mail sent", "user@example.com", promotion:'second gem free', segment:'ruby developers')
+
+### Adding server-side user attributes 
+
+To update or set properties on your users directly from your application, use `Heap.identify`. `Heap.identify` takes 2 arguments:
+
+* [String] identity: The e-mail address used to identify your user
+* [Hash] properties: A hash containing additional properties for your users (Hashes with multiple levels are currently not supported)
+
+Example:
+
+    Heap.identify("user@example.com", segment:'ruby developers', age: 25)
+
+## Contributing to Heap
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
@@ -18,6 +72,7 @@ Heap is a simple rubygem that makes is simple to integrate your application with
 
 ## Copyright
 
-The Heap gem is licensed under the MIT license. Copyright (c) 2014 Dennis de Reus. See LICENSE.txt for
-further details.
+The Heap gem is licensed under the MIT license. Copyright (c) 2014 Dennis de Reus. See LICENSE.txt for further details.
+
+The Heap gem is a personal project and not affiliated to heapanalytics.com
 
