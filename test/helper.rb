@@ -21,6 +21,7 @@ rescue Bundler::BundlerError => e
 end
 
 require 'heap'
+require 'heap/view_helpers'
 require 'minitest/autorun'
 require 'shoulda'
 require 'webmock/minitest'

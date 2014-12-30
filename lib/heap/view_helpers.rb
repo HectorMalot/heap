@@ -9,12 +9,11 @@ class Heap
       end
     end
 
-    def heap_identify(email, properties=nil)
+    def heap_identify(handle, properties = nil)
       body = properties.map {|k,v| ", #{k}: \"#{v}\""}.join if properties.is_a? Hash
       javascript_tag do
-        raw %Q{heap.identify({email: "#{email}" #{body}}); }.html_safe
+        raw %Q{heap.identify({#{Heap.default_handle_type}: "#{handle}" #{body}});}.html_safe
       end
-
     end
   end
 end
