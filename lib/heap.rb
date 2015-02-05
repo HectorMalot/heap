@@ -14,4 +14,12 @@ class Heap
   def self.app_id
     @@app_id
   end
+
+  def self.default_handle_type=(value)
+    @@handle_type = value
+  end
+
+  def self.default_handle_type
+    @@handle_type ||= 'email'
+  end
 end
