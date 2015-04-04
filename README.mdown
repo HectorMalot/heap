@@ -30,7 +30,7 @@ Heap needs your application ID to successfully submit data to heapanalytics.com.
 
 ### Identifying your users
 
-The `heap_identify` view helper can be used to supply heap with attributes for your users. The helper takes 2 arguments: 
+The `heap_identify` view helper can be used to supply heap with attributes for your users. The helper takes 2 arguments:
 
 * [String] email: The e-mail address used to identify your visitor in Heap
 * [Hash, optional] properties: A hash containing additional properties for your users (Hashes with multiple levels are currently not supported)
@@ -42,6 +42,12 @@ Example:
 If you wish to use a different handle type, only `handle`/`email` are supported at the time of writing, you can set it using `Heap.default_handle_type = 'handle'`.
 
 Default is set to `email`.
+
+### Adding custom event properties
+
+With `heap_set_event_properties`, you can specify key-value pairs to associate with all of a user's subsequent events. This helper takes one argument:
+
+* [Hash] properties: A hash containing all of the properties you want to attach to the user's events
 
 ### Tracking server-side events
 
@@ -55,7 +61,7 @@ Example:
 
     Heap.event("Welcome e-mail sent", "user@example.com", promotion:'second gem free', segment:'ruby developers')
 
-### Adding server-side user attributes 
+### Adding server-side user attributes
 
 To update or set properties on your users directly from your application, use `Heap.identify`. `Heap.identify` takes 2 arguments:
 
@@ -67,7 +73,7 @@ Example:
     Heap.identify("user@example.com", segment:'ruby developers', age: 25)
 
 ## Contributing to Heap
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 * Fork the project.
