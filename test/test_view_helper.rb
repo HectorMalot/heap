@@ -31,4 +31,17 @@ class HeapHelperTest < MiniTest::Test
 
     assert_equal js, %Q/heap.setEventProperties({"first":"first value","second":2,"third":true});/
   end
+
+  should "set load properties key-value pairs" do
+
+    Heap.app_id = '123'
+
+    js = heap_analytics({
+      forceSSL: true,
+      secureCookie: true,
+      disableTextCapture: true
+    })
+
+    assert_includes js, %Q/heap.load("123", {forceSSL: true, secureCookie: true, disableTextCapture: true});/
+  end
 end

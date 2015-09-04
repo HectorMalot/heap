@@ -72,6 +72,16 @@ Example:
 
     Heap.identify("user@example.com", segment:'ruby developers', age: 25)
 
+### Advanced load configuration
+
+When calling 'heap_analytics', you may set additional advanced configuration options (such as secure cookies, enabling SSL, and disabling text capture). The helper takes an optional argument:
+
+* [Hash, optional] properties: A hash containing additional configuration options (Hashes with multiple levels are currently not supported)
+
+Example:
+
+      <%= heap_analytics(forceSSL: true, secureCookie: true, disableTextCapture: true) %>
+
 ## Contributing to Heap
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
@@ -87,4 +97,3 @@ Example:
 The Heap gem is licensed under the MIT license. Copyright (c) 2014 Dennis de Reus. See LICENSE.txt for further details.
 
 The Heap gem is a personal project and not affiliated to heapanalytics.com
-
