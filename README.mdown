@@ -1,6 +1,7 @@
 # Heap
 
 [![Gem Version](https://badge.fury.io/rb/heap.svg)](http://badge.fury.io/rb/heap)
+[![Build Status](https://travis-ci.org/HectorMalot/heap.svg?branch=master)](https://travis-ci.org/HectorMalot/heap)
 
 Heap is a simple rubygem that makes is simple to integrate your application with [heap analytics](http://heapanalytics.com). It provides:
 
