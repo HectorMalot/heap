@@ -3,7 +3,6 @@ require 'json'
 class Heap
   module ViewHelpers
     def heap_analytics(properties = {})
-      return '' unless Rails.env.production?
       return '' unless Rails.application.secrets.heap_id
       config = properties.map {|k,v| "#{k}: #{v}"}.join(", ") if properties.is_a? Hash
       heap_js_block %Q{
@@ -13,12 +12,15 @@ class Heap
     end
 
     def heap_identify(handle, properties = nil)
-      body = properties.map {|k,v| ", #{k}: \"#{v}\""}.join if properties.is_a? Hash
-      heap_js_block %Q{heap.identify({#{Heap.default_handle_type}: "#{handle}" #{body}});}
+      body = properties.map {|k,v| "#{k}: \"#{v}\", "}.join.chomp(", ") if properties.is_a? Hash
+      heap_js_block %Q{
+        heap.identify('#{handle}');
+        heap.addUserProperties({#{body}});
+      }
     end
 
-    def heap_set_event_properties(properties = {})
-      heap_js_block %Q{heap.setEventProperties(#{properties.to_json});}
+    def heap_add_event_properties(properties = {})
+      heap_js_block %Q{heap.addEventProperties(#{properties.to_json});}
     end
 
     def heap_js_block(content)
